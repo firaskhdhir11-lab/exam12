@@ -1,0 +1,22 @@
+﻿services:
+  postgres:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: db_boutique
+  redis:
+    image: redis:alpine
+  eureka-server:
+    build: ./eureka-server
+    ports: ["8761:8761"]
+  produits-service:
+    build: ./produits-service
+    depends_on: [postgres, redis, eureka-server]
+  avis-service:
+    build: ./avis-service
+    depends_on: [postgres, eureka-server]
+  api-gateway:
+    build: ./api-gateway
+    ports: ["8090:8090"]
+    depends_on: [eureka-server]
