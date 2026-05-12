@@ -1,0 +1,7 @@
+com\exam\produit\service\ProduitService.class
+com\exam\produit\repository\CategorieRepository.class
+com\exam\produit\entity\Produit.class
+com\exam\produit\controller\ProduitController.class
+com\exam\produit\entity\Categorie.class
+com\exam\produit\repository\ProduitRepository.class
+com\exam\produit\ProduitApplication.class

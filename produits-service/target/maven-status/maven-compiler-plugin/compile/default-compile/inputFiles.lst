@@ -1,3 +1,7 @@
 D:\Exam\produits-service\src\main\java\com\exam\produit\entity\Categorie.java
 D:\Exam\produits-service\src\main\java\com\exam\produit\entity\Produit.java
+D:\Exam\produits-service\src\main\java\com\exam\produit\controller\ProduitController.java
+D:\Exam\produits-service\src\main\java\com\exam\produit\ProduitApplication.java
+D:\Exam\produits-service\src\main\java\com\exam\produit\repository\CategorieRepository.java
+D:\Exam\produits-service\src\main\java\com\exam\produit\repository\ProduitRepository.java
 D:\Exam\produits-service\src\main\java\com\exam\produit\service\ProduitService.java

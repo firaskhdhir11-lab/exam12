@@ -1,4 +1,4 @@
-﻿package com.exam.produit.entity;
+package com.exam.produit.entity;
 import jakarta.persistence.*;
 import lombok.*;
 @Entity @Data @NoArgsConstructor @AllArgsConstructor
