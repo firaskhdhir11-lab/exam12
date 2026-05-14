@@ -1,10 +1,10 @@
-﻿server:
+server:
   port: 8092
 spring:
   application:
     name: avis-service
   datasource:
-    url: jdbc:postgresql://postgres:5432/db_boutique
+    url: jdbc:postgresql://exam-postgres-1:5432/db_boutique
     username: user
     password: password
   jpa:
@@ -13,4 +13,4 @@ spring:
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://exam-eureka-server-1:8761/eureka/

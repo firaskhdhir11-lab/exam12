@@ -1,22 +1,58 @@
 ﻿services:
   postgres:
     image: postgres:15
+    container_name: exam-postgres-1
+    ports:
+      - "5433:5432"  # Changé en 5433 pour éviter le conflit
     environment:
       POSTGRES_USER: user
       POSTGRES_PASSWORD: password
       POSTGRES_DB: db_boutique
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U user -d db_boutique"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
   redis:
-    image: redis:alpine
+    image: redis:latest
+    container_name: exam-redis-1
+    ports:
+      - "6380:6379"  # Changé en 6380 pour éviter le conflit
+
   eureka-server:
     build: ./eureka-server
-    ports: ["8761:8761"]
+    container_name: exam-eureka-server-1
+    ports:
+      - "8761:8761"
+
   produits-service:
     build: ./produits-service
-    depends_on: [postgres, redis, eureka-server]
+    container_name: exam-produits-service-1
+    ports:
+      - "8091:8091"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+
   avis-service:
     build: ./avis-service
-    depends_on: [postgres, eureka-server]
+    container_name: exam-avis-service-1
+    ports:
+      - "8092:8092"
+    depends_on:
+      postgres:
+        condition: service_healthy
+      eureka-server:
+        condition: service_started
+
   api-gateway:
     build: ./api-gateway
-    ports: ["8090:8090"]
-    depends_on: [eureka-server]
+    container_name: exam-api-gateway-1
+    ports:
+      - "8090:8090"
+    depends_on:
+      eureka-server:
+        condition: service_started

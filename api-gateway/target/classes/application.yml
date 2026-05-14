@@ -6,15 +6,15 @@ spring:
   cloud:
     gateway:
       routes:
-        - id: produits-route
+        - id: produits-service
           uri: lb://produits-service
           predicates:
             - Path=/api/produits/**, /api/categories/**
-        - id: avis-route
+        - id: avis-service
           uri: lb://avis-service
           predicates:
             - Path=/api/avis/**
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://exam-eureka-server-1:8761/eureka/

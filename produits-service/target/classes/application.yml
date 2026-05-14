@@ -4,20 +4,19 @@ spring:
   application:
     name: produits-service
   datasource:
-    url: jdbc:postgresql://postgres:5432/db_boutique
+    url: jdbc:postgresql://exam-postgres-1:5432/db_boutique
     username: user
     password: password
   jpa:
     hibernate:
       ddl-auto: update
     defer-datasource-initialization: true
+  sql:
+    init:
+      mode: always
   cache:
-    type: redis
-  data:
-    redis:
-      host: redis
-      port: 6379
+    type: none
 eureka:
   client:
     service-url:
-      defaultZone: http://eureka-server:8761/eureka/
+      defaultZone: http://exam-eureka-server-1:8761/eureka/
